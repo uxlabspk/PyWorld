@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/css/bootstrap.min.css') }}">
+
+  <title>PyWorld</title>
+</head>
+
+<body>
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light shadow-sm p-3" aria-label="Eleventh navbar example">
+    <div class="container">
+      <a href="{{ url_for('index') }}" class="d-flex align-items-center text-decoration-none">
+        <svg height="42" width="42" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="m17.727273 3.8181803-4.090909 3.6818182v9.0000005l4.090909-3.681818zm-10.227273 2.4545455c-1.5954545 0-3.3136364.3272727-4.5 1.2272727v11.9945455c0 .204546.2045455.409091.4090909.409091.081818 0 .1227273-.05727.2045455-.05727 1.1045454-.531818 2.7-.891818 3.8863636-.891818 1.5954545 0 3.313636.327273 4.5 1.227273 1.104545-.695455 3.109091-1.227273 4.5-1.227273 1.35 0 2.740909.253637 3.886364.867273.08182.04091.122727.02454.204545.02454.204546.000002.409091-.204543.409091-.409088v-11.9372735c-.490909-.3681818-1.022727-.6136363-1.636364-.8181818v1.636364 4.5000003 4.909091c-.9-.286364-1.881818-.409091-2.863636-.409091-1.390909 0-3.395455.531818-4.5 1.227272v-5.727272-3.6818193-1.6363632c-1.186364-.9-2.9045455-1.2272727-4.5-1.2272727z"
+            fill="#0080ff" stroke-width=".818182" />
+        </svg>
+        <span class="fs-4">PyWorld</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09"
+        aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample09">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('about') }}">About</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-bs-toggle="dropdown"
+              aria-expanded="false">Courses</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown09">
+              <li><a class="dropdown-item" href="{{ url_for('python') }}">Python</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('java') }}">Java</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('mysql') }}">MySql</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url_for('contact') }}" class="nav-link">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url_for('signin') }}" class="ms-3 btn btn-primary">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- form -->
+  <section class="vh-100">
+    <div class="container py-5 h-100">
+      <div class="row d-flex align-items-center justify-content-center h-100">
+        <div class="col-md-8 col-lg-7 col-xl-6">
+          <img src="{{ url_for('static', filename='/img/cover.svg') }}" class="img-fluid" alt="Phone image">
+        </div>
+        <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+          <form action="{{ url_for('signin') }}" method="post">
+            <div class="d-flex justify-content-around align-items-center mb-4">
+              <h1 class="">Signin</h1>
+            </div>
+
+            <!-- Email input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input type="email" id="email" name="email" class="form-control form-control-lg" />
+              <label class="form-label" for="email">Email address</label>
+            </div>
+
+            <!-- Password input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input type="password" id="password" name="password" class="form-control form-control-lg" />
+              <label class="form-label" for="password">Password</label>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" data-mdb-button-init data-mdb-ripple-init
+              class="btn btn-primary btn-lg btn-block w-100 mb-4">Sign in</button>
+
+            <!-- Error Div -->
+            <p class="text-danger text-center">
+              {{ msg }}
+            </p>
+
+            <!-- Signup -->
+            <div class="d-flex justify-content-around align-items-center mb-4">
+              <p>Don't have an account? <a class="bottom" href="{{url_for('signup')}}"> Sign Up</a></p>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+<script src="{{ url_for('static', filename='/js/bootstrap.bundle.min.js') }}"></script>
+<!-- <script src="assets/js/app.js"></script> -->
+
+</html>

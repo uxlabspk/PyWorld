@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/bootstrap.min.css') }}">
+
+    <title>PyWorld - Java</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm p-3" aria-label="Eleventh navbar example">
+        <div class="container">
+            <a href="{{ url_for('index') }}" class="d-flex align-items-center text-decoration-none">
+                <svg height="42" width="42" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="m17.727273 3.8181803-4.090909 3.6818182v9.0000005l4.090909-3.681818zm-10.227273 2.4545455c-1.5954545 0-3.3136364.3272727-4.5 1.2272727v11.9945455c0 .204546.2045455.409091.4090909.409091.081818 0 .1227273-.05727.2045455-.05727 1.1045454-.531818 2.7-.891818 3.8863636-.891818 1.5954545 0 3.313636.327273 4.5 1.227273 1.104545-.695455 3.109091-1.227273 4.5-1.227273 1.35 0 2.740909.253637 3.886364.867273.08182.04091.122727.02454.204545.02454.204546.000002.409091-.204543.409091-.409088v-11.9372735c-.490909-.3681818-1.022727-.6136363-1.636364-.8181818v1.636364 4.5000003 4.909091c-.9-.286364-1.881818-.409091-2.863636-.409091-1.390909 0-3.395455.531818-4.5 1.227272v-5.727272-3.6818193-1.6363632c-1.186364-.9-2.9045455-1.2272727-4.5-1.2272727z"
+                        fill="#0080ff" stroke-width=".818182" />
+                </svg>
+                <span class="fs-4">PyWorld</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09"
+                aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample09">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-bs-toggle="dropdown"
+                            aria-expanded="false">Courses</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown09">
+                            <li><a class="dropdown-item" href="{{ url_for('python') }}">Python</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('java') }}">Java</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('mysql') }}">MySql</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('contact') }}" class="nav-link">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('signin') }}" class="ms-3 btn btn-primary">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="px-4 py-5 my-5 text-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" version="1">
+            <path style="opacity:0.2"
+                d="m 4.0545956,32.001976 c -0.011739,0.334698 -0.050778,0.662275 -0.050778,0.999932 C 4.0038171,48.512851 16.490966,61 32.001909,61 47.512852,61 60.000001,48.512851 60.000001,33.001908 c 0,-0.337657 -0.03904,-0.665234 -0.05078,-0.999932 -0.527964,15.040975 -12.775129,26.99816 -27.948095,26.99816 -15.173366,0 -27.4201313,-11.957185 -27.9480953,-26.99816 z" />
+            <rect style="fill:#e74c3c" width="56" height="56" x="4" y="4" rx="27.998" ry="27.998" />
+            <g style="opacity:0.2;enable-background:new"
+                transform="matrix(0.6500557,0,0,0.68491332,83.36459,-4.0233684)">
+                <path
+                    d="m -86.682,70.021 c 0,0 -2.2303,1.2982 1.5891,1.7362 4.6278,0.52836 6.9927,0.45227 12.091,-0.51144 0,0 1.3431,0.84021 3.2156,1.5679 -11.433,4.8982 -25.875,-0.28382 -16.896,-2.7927 z" />
+                <path
+                    d="m -88.08,63.628 c 0,0 -2.5019,1.8524 1.3204,2.2474 4.944,0.5104 8.8468,0.55226 15.604,-0.74823 0,0 0.93244,0.94717 2.4009,1.4648 -13.821,4.0426 -29.214,0.31805 -19.326,-2.964 z" />
+                <path
+                    d="m -76.304,52.781 c 2.8185,3.2444 -0.73906,6.1616 -0.73906,6.1616 0,0 7.1525,-3.6917 3.8684,-8.3168 -3.0684,-4.3112 -5.4208,-6.4528 7.3147,-13.839 1.29e-4,0 -19.992,4.9918 -10.444,15.994 z" />
+                <path
+                    d="m -61.183,74.75 c 0,0 1.6511,1.3611 -1.8185,2.4137 -6.5975,1.9983 -27.465,2.6011 -33.261,0.07996 -2.082,-0.90686 1.8242,-2.1638 3.0532,-2.4293 1.2815,-0.27723 2.0132,-0.22659 2.0132,-0.22659 -2.3172,-1.6317 -14.977,3.2046 -6.4297,4.5917 23.308,3.7781 42.488,-1.7017 36.442,-4.4294 z" />
+                <path
+                    d="m -85.609,57.003 c 0,0 -10.613,2.5215 -3.7582,3.4379 2.8952,0.38742 8.6634,0.29828 14.04,-0.15282 4.393,-0.36869 8.8016,-1.1572 8.8016,-1.1572 0,0 -1.5479,0.664 -2.6685,1.4288 -10.78,2.8352 -31.6,1.5148 -25.605,-1.3838 5.0675,-2.4515 9.1898,-2.1729 9.1898,-2.1729 z" />
+                <path
+                    d="m -66.569,67.644 c 10.957,-5.6922 5.8904,-11.163 2.3541,-10.426 -0.86475,0.18047 -1.2527,0.33678 -1.2527,0.33678 0,0 0.32218,-0.50472 0.93567,-0.72187 6.9959,-2.4584 12.375,7.2531 -2.256,11.099 -1.3e-4,0 0.1682,-0.15244 0.21896,-0.28808 z" />
+                <path
+                    d="m -73.174,24.859 c 0,0 6.0668,6.0703 -5.756,15.402 -9.4811,7.4886 -2.1617,11.757 -0.0034,16.636 -5.5348,-4.9933 -9.5945,-9.3895 -6.8715,-13.48 3.9987,-6.0043 15.078,-8.9163 12.631,-18.558 z" />
+                <path
+                    d="m -84.532,83.074 c 10.515,0.67227 26.667,-0.37411 27.049,-5.3501 0,0 -0.73479,1.8863 -8.6909,3.383 -8.9758,1.6898 -20.049,1.4931 -26.614,0.40912 0,0 1.3449,1.1132 8.2557,1.5579 z" />
+            </g>
+            <g style="fill:#ffffff;enable-background:new"
+                transform="matrix(0.6500557,0,0,0.68491332,83.36459,-5.0230321)">
+                <path
+                    d="m -86.682,70.021 c 0,0 -2.2303,1.2982 1.5891,1.7362 4.6278,0.52836 6.9927,0.45227 12.091,-0.51144 0,0 1.3431,0.84021 3.2156,1.5679 -11.433,4.8982 -25.875,-0.28382 -16.896,-2.7927 z" />
+                <path
+                    d="m -88.08,63.628 c 0,0 -2.5019,1.8524 1.3204,2.2474 4.944,0.5104 8.8468,0.55226 15.604,-0.74823 0,0 0.93244,0.94717 2.4009,1.4648 -13.821,4.0426 -29.214,0.31805 -19.326,-2.964 z" />
+                <path
+                    d="m -76.304,52.781 c 2.8185,3.2444 -0.73906,6.1616 -0.73906,6.1616 0,0 7.1525,-3.6917 3.8684,-8.3168 -3.0684,-4.3112 -5.4208,-6.4528 7.3147,-13.839 1.29e-4,0 -19.992,4.9918 -10.444,15.994 z" />
+                <path
+                    d="m -61.183,74.75 c 0,0 1.6511,1.3611 -1.8185,2.4137 -6.5975,1.9983 -27.465,2.6011 -33.261,0.07996 -2.082,-0.90686 1.8242,-2.1638 3.0532,-2.4293 1.2815,-0.27723 2.0132,-0.22659 2.0132,-0.22659 -2.3172,-1.6317 -14.977,3.2046 -6.4297,4.5917 23.308,3.7781 42.488,-1.7017 36.442,-4.4294 z" />
+                <path
+                    d="m -85.609,57.003 c 0,0 -10.613,2.5215 -3.7582,3.4379 2.8952,0.38742 8.6634,0.29828 14.04,-0.15282 4.393,-0.36869 8.8016,-1.1572 8.8016,-1.1572 0,0 -1.5479,0.664 -2.6685,1.4288 -10.78,2.8352 -31.6,1.5148 -25.605,-1.3838 5.0675,-2.4515 9.1898,-2.1729 9.1898,-2.1729 z" />
+                <path
+                    d="m -66.569,67.644 c 10.957,-5.6922 5.8904,-11.163 2.3541,-10.426 -0.86475,0.18047 -1.2527,0.33678 -1.2527,0.33678 0,0 0.32218,-0.50472 0.93567,-0.72187 6.9959,-2.4584 12.375,7.2531 -2.256,11.099 -1.3e-4,0 0.1682,-0.15244 0.21896,-0.28808 z" />
+                <path
+                    d="m -73.174,24.859 c 0,0 6.0668,6.0703 -5.756,15.402 -9.4811,7.4886 -2.1617,11.757 -0.0034,16.636 -5.5348,-4.9933 -9.5945,-9.3895 -6.8715,-13.48 3.9987,-6.0043 15.078,-8.9163 12.631,-18.558 z" />
+                <path
+                    d="m -84.532,83.074 c 10.515,0.67227 26.667,-0.37411 27.049,-5.3501 0,0 -0.73479,1.8863 -8.6909,3.383 -8.9758,1.6898 -20.049,1.4931 -26.614,0.40912 0,0 1.3449,1.1132 8.2557,1.5579 z" />
+            </g>
+            <path style="opacity:0.2;fill:#ffffff"
+                d="M 31.998047 4.0039062 C 16.487104 4.0039062 4 16.491011 4 32.001953 C 4 32.115501 4.0112849 32.225993 4.0175781 32.337891 C 4.3690973 17.137171 16.709816 5.0039062 31.998047 5.0039062 C 47.284977 5.0039062 59.626938 17.13508 59.980469 32.333984 C 59.986725 32.223394 59.996094 32.114162 59.996094 32.001953 C 59.996094 16.491011 47.50899 4.0039062 31.998047 4.0039062 z" />
+        </svg>
+        <h1 class="display-5 mt-3 fw-bold">Java</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">
+                Welcome to Java! Renowned for its versatility and robust features, Java caters to beginners and seasoned
+                developers alike. With its concise syntax and vast libraries, Java empowers you to tackle diverse
+                applications. Let's delve into its fundamentals!
+            </p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <button type="button" class="btn btn-dark btn-md px-4 gap-3">Start Learning</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Why Learn Python -->
+    <div class="container">
+        <div class="row d-flex align-items-center py-5">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">
+                    Java Mastery Unlocked
+                </h2>
+                <p class="lead">
+                    Java Journey: Embark on a Path to Mastering Java Programming with Expert Guidance and Hands-On
+                    Learning!
+                </p>
+                <button class="btn btn-md btn-dark">Learn more</button>
+            </div>
+            <div class="col-md-5">
+                <img src="{{ url_for('static', filename='/img/learn_java2.jpg')}}" alt="" width="100%">
+            </div>
+        </div>
+
+        <div class="row d-flex align-items-center py-5">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading">
+                    Discover Why Java is Essential: Top 10 Reasons to Embrace the Power of Java Programming Today!
+                </h2>
+                <p class="lead">
+                    Explore Java's significance with its versatility, wide adoption, strong community support, career
+                    opportunities, and role in modern technology solutions.
+                </p>
+                <button class="btn btn-md btn-dark">Learn more</button>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img src="{{ url_for('static', filename='/img/learn_java.png') }}" alt="" width="100%">
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- footer -->
+    <footer class="container">
+        <p class="float-end"><a href="#">Back to top</a></p>
+        <p>© 2024 Abdullah</p>
+    </footer>
+</body>
+<script src="{{ url_for('static', filename='/js/bootstrap.bundle.min.js') }}"></script>
+
+</html>
