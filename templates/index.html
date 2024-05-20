@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='/css/bootstrap.min.css') }}">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>PyWorld</title>
 </head>
 
@@ -46,9 +46,16 @@
                     <li class="nav-item">
                         <a href="{{ url_for('contact') }}" class="nav-link">Contact</a>
                     </li>
+                    {% if not logged_in %}
                     <li class="nav-item">
                         <a href="{{ url_for('signin') }}" class="ms-3 btn btn-primary">Login</a>
                     </li>
+                    {% endif %}
+                    {% if logged_in %}
+                    <li class="nav-item">
+                        <a href="{{ url_for('logout') }}" class="ms-3 btn btn-danger">Logout</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -215,10 +222,73 @@
     </div>
 
     <!-- footer -->
-    <footer class="container">
-        <p class="float-end"><a href="#">Back to top</a></p>
-        <p>© 2024 Abdullah</p>
-    </footer>
+    <footer class="text-center text-white bg-light">
+        <!-- Grid container -->
+        <div class="container pt-4">
+          <!-- Section: Social media -->
+          <section class="mb-4">
+            <!-- Facebook -->
+            <a
+              data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+      
+            <!-- Twitter -->
+            <a
+              data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-twitter"></i
+            ></a>
+      
+            <!-- Google -->
+            <a
+              data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-google"></i
+            ></a>
+      
+            <!-- Instagram -->
+            <a
+              data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-instagram"></i
+            ></a>
+      
+            <!-- Linkedin -->
+            <a
+              data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <!-- Github -->
+            <a
+              data-mdb-ripple-init class="btn btn-link btn-floating btn-lg text-dark m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-github"></i
+            ></a>
+          </section>
+          <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+      
+        
+        <div class="text-center text-dark p-3" >
+          © 2023 Copyright Abdullah
+        </div>
+      </footer>
 </body>
 <script src="{{ url_for('static', filename='/js/bootstrap.bundle.min.js') }}"></script>
 <!-- <script src="assets/js/app.js"></script> -->

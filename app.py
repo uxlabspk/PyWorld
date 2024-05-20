@@ -1,89 +1,162 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, session
 import re
-# from main import main
+import mysql.connector
+from main import main
 
 app = Flask(__name__)
 
-@app.route('/')
+app.secret_key = "1112222333" # random key
+
+
+connection = mysql.connector.connect(
+    host="localhost", user="root", password="", database="pyworld"
+)
+
+
+@app.route("/")
 def index():
-    return render_template('index.html')
+    if 'email' in session:
+        logged_in = True
+    else:
+        logged_in = False
 
-@app.route('/eye', methods=['POST'])
+    return render_template("index.html", logged_in=logged_in)
+
+
+@app.route("/eye", methods=["POST"])
 def submit():
-    # main()
-    return redirect(url_for('index'))
+    main()
+    return redirect(url_for("index"))
 
 
-@app.route('/signin ', methods=['POST', 'GET'])
+@app.route("/signin ", methods=["POST", "GET"])
 def signin():
-    msg = ''
-    if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
-        email = request.form['email']
-        password = request.form['password']
+    if 'email' in session:
+        logged_in = True
+    else:
+        logged_in = False
 
-        if email == 'testing@example.com' and password == 'testing' :
-            return redirect(url_for('index')) # render_template('index.html')
+    msg = ""
+    if (
+        request.method == "POST"
+        and "email" in request.form
+        and "password" in request.form
+    ):
+        email = request.form["email"]
+        password = request.form["password"]
+
+        cursor = connection.cursor()
+        cursor.execute("Select * from users where useremail = %s and password = %s", (email, password, ))
+        account = cursor.fetchone()
+
+        if account:
+            session['email'] = email
+            return redirect("/")  # render_template('index.html')
         else:
-            msg = 'Invalid username'
+            msg = "Invalid username or password"
 
-    return render_template('signin.html', msg = msg)
+    return render_template("signin.html", msg=msg, logged_in=logged_in)
 
 
-        # cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        # cursor.execute('SELECT * FROM accounts WHERE username = % s AND password = % s', (username, password, ))
-        # account = cursor.fetchone()
-        # if account:
-        #    session['loggedin'] = True
-        #    session['username'] = account['username']
-        #    msg = 'Logged in successfully !'
-        #    return render_template('index.html', msg = msg)
-        #else:
-        #    msg = 'Incorrect username / password !'
-    #return render_template('signin.html', msg = msg)
-    # return render_template('signin.html')
-
-@app.route('/signup', methods=['POST', 'GET'])
+@app.route("/signup", methods=["POST", "GET"])
 def signup():
-    msg = ''
-    if request.method == 'POST' and 'email' in request.form and 'password' in request.form and 'username' in request.form:
-        email = request.form['email'];
-        username = request.form['username'];
-        password = request.form['password'];
+    if 'email' in session:
+        logged_in = True
+    else:
+        logged_in = False
 
-        if not re.match(r'[^@]+@[^@]+\.[^@]+', email):
-            msg = 'Invalid email address'
-        elif not re.match(r'[A-Za-z0-9]+', username):
-            msg = 'Username must contain only characters and numbers.'
+    msg = ""
+    if (
+        request.method == "POST"
+        and "email" in request.form
+        and "password" in request.form
+        and "username" in request.form
+    ):
+        email = request.form["email"]
+        username = request.form["username"]
+        password = request.form["password"]
+
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM users WHERE username = %s", (username,))
+        account = cursor.fetchone()
+
+        if account:
+            msg = "user already exist"
+        elif not re.match(r"[^@]+@[^@]+\.[^@]+", email):
+            msg = "Invalid email address"
+        elif not re.match(r"[A-Za-z0-9]+", username):
+            msg = "Username must contain only characters and numbers."
         elif not username or not password or not email:
-            msg = 'Please fill out the form'
+            msg = "Please fill out the form"
         else:
-            msg = 'Registration Successful'
-            return redirect(url_for(index))
+            cursor.execute(
+                "Insert into users values (null, %s, %s, %s)",
+                (username, email, password),
+            )
+            connection.commit()
+            msg = "Registration Successful"
+            session['email'] = email
+            return redirect("/")
 
-    return render_template('signup.html', msg = msg)
+    return render_template("signup.html", msg=msg, logged_in=logged_in)
 
 
-
-@app.route('/contact')
+@app.route("/contact")
 def contact():
-    return render_template('contact.html')
+    if 'email' in session:
+        logged_in = True
+    else:
+        logged_in = False
 
-@app.route('/about')
+    return render_template("contact.html", logged_in=logged_in)
+
+
+@app.route("/about")
 def about():
-    return render_template('about.html')
+    if 'email' in session:
+        logged_in = True
+    else:
+        logged_in = False
 
-@app.route('/python')    
+    return render_template("about.html", logged_in=logged_in)
+
+
+@app.route("/python")
 def python():
-    return render_template('python.html')
+    if 'email' in session:
+        logged_in = True
+    else:
+        logged_in = False
+
+    return render_template("python.html", logged_in=logged_in)
 
 
-@app.route('/java')
+@app.route("/java")
 def java():
-    return render_template('java.html')
+    if 'email' in session:
+        logged_in = True
+    else:
+        logged_in = False
 
-@app.route('/mysql')
+    return render_template("java.html", logged_in=logged_in)
+
+
+@app.route("/mysql")
 def mysql():
-    return render_template('mysql.html')
+    if 'email' in session:
+        logged_in = True
+    else:
+        logged_in = False
 
-if __name__ == '__main__':
+    return render_template("mysql.html", logged_in=logged_in)
+
+
+@app.route('/logout')
+def logout():
+    session.pop('email', None)
+    return redirect("/")
+
+
+
+if __name__ == "__main__":
     app.run(debug=True)

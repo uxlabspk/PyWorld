@@ -46,9 +46,16 @@
           <li class="nav-item">
             <a href="{{ url_for('contact') }}" class="nav-link">Contact</a>
           </li>
+          {% if not logged_in %}
           <li class="nav-item">
             <a href="{{ url_for('signin') }}" class="ms-3 btn btn-primary">Login</a>
           </li>
+          {% endif %}
+          {% if logged_in %}
+          <li class="nav-item">
+            <a href="{{ url_for('logout') }}" class="ms-3 btn btn-danger">Logout</a>
+          </li>
+          {% endif %}
         </ul>
       </div>
     </div>
@@ -69,19 +76,22 @@
 
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4">
-              <input type="email" name="email" placeholder="Enter your email" id="email" class="form-control form-control-lg" />
-              
+              <input type="email" name="email" placeholder="Enter your email" id="email"
+                class="form-control form-control-lg" />
+
             </div>
 
             <!-- Username input -->
             <div data-mdb-input-init class="form-outline mb-4">
-              <input type="text" id="username" placeholder="Enter your username" name="username" class="form-control form-control-lg" />
-              
+              <input type="text" id="username" placeholder="Enter your username" name="username"
+                class="form-control form-control-lg" />
+
             </div>
 
             <!-- Password input -->
             <div data-mdb-input-init class="form-outline mb-4">
-              <input type="password" id="password" placeholder="Enter your password" name="password" class="form-control form-control-lg" />
+              <input type="password" id="password" placeholder="Enter your password" name="password"
+                class="form-control form-control-lg" />
             </div>
 
 
