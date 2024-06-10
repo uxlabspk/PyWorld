@@ -61,62 +61,100 @@
     </div>
   </nav>
 
-  <!-- form -->
-  <section class="vh-100">
-    <div class="container py-5 h-100">
-      <div class="row d-flex align-items-center justify-content-center h-100">
-        <div class="col-md-8 col-lg-7 col-xl-6">
-          <img src="{{ url_for('static', filename='/img/cover.svg') }}" class="img-fluid" alt="Phone image">
-        </div>
-        <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-          <form action="{{ url_for('signup') }}" method="post">
-            <div class="d-flex justify-content-around align-items-center mb-4">
-              <h1 class="">Sign Up</h1>
-            </div>
+  <div id="textContainer">
+    <!-- form -->
+    <section class="vh-100">
+      <div class="container py-5 h-100">
+        <div class="row d-flex align-items-center justify-content-center h-100">
+          <div class="col-md-8 col-lg-7 col-xl-6">
+            <img src="{{ url_for('static', filename='/img/cover.svg') }}" class="img-fluid" alt="Phone image">
+          </div>
+          <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+            <form action="{{ url_for('signup') }}" method="post">
+              <div class="d-flex justify-content-around align-items-center mb-4">
+                <h1 class="">Sign Up</h1>
+              </div>
 
-            <!-- Email input -->
-            <div data-mdb-input-init class="form-outline mb-4">
-              <input type="email" name="email" placeholder="Enter your email" id="email"
-                class="form-control form-control-lg" />
+              <!-- Email input -->
+              <div data-mdb-input-init class="form-outline mb-4">
+                <input type="email" name="email" placeholder="Enter your email" id="email"
+                  class="form-control form-control-lg" />
 
-            </div>
+              </div>
 
-            <!-- Username input -->
-            <div data-mdb-input-init class="form-outline mb-4">
-              <input type="text" id="username" placeholder="Enter your username" name="username"
-                class="form-control form-control-lg" />
+              <!-- Username input -->
+              <div data-mdb-input-init class="form-outline mb-4">
+                <input type="text" id="username" placeholder="Enter your username" name="username"
+                  class="form-control form-control-lg" />
 
-            </div>
+              </div>
 
-            <!-- Password input -->
-            <div data-mdb-input-init class="form-outline mb-4">
-              <input type="password" id="password" placeholder="Enter your password" name="password"
-                class="form-control form-control-lg" />
-            </div>
+              <!-- Password input -->
+              <div data-mdb-input-init class="form-outline mb-4">
+                <input type="password" id="password" placeholder="Enter your password" name="password"
+                  class="form-control form-control-lg" />
+              </div>
 
 
-            <!-- Submit button -->
-            <button type="submit" data-mdb-button-init data-mdb-ripple-init
-              class="btn btn-primary btn-lg btn-block w-100 mb-4">Sign up</button>
+              <!-- Submit button -->
+              <button type="submit" data-mdb-button-init data-mdb-ripple-init
+                class="btn btn-primary btn-lg btn-block w-100 mb-4">Sign up</button>
 
-            <!-- Error Div -->
-            <p class="text-danger text-center">
-              {{ msg }}
-            </p>
+              <!-- Error Div -->
+              <p class="text-danger text-center">
+                {{ msg }}
+              </p>
 
-            <!-- Signup -->
-            <div class="d-flex justify-content-around align-items-center mb-4">
-              <p>Already have an account? <a href="{{ url_for('signin') }}">Login</a></p>
-            </div>
+              <!-- Signup -->
+              <div class="d-flex justify-content-around align-items-center mb-4">
+                <p>Already have an account? <a href="{{ url_for('signin') }}">Login</a></p>
+              </div>
 
-          </form>
+            </form>
+          </div>
+
+          <!-- audio command buttons -->
+          <div class="d-flex rounded position-fixed fixed-bottom m-5 p-3" style="width: 150px;">
+            <button class="btn" id="readButton">
+              <?xml version="1.0" encoding="iso-8859-1"?>
+              <svg height="30px" width="30px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 485 485" xml:space="preserve">
+                <g>
+                  <g>
+                    <path d="M282.5,55.15c-33.5,0-66.3,8.9-95,25.8c-25.6,15.1-47.3,36.1-63.2,61.1H52.7c-29.1,0-52.7,23.6-52.7,52.7v95.5
+    c0,29.1,23.6,52.7,52.7,52.7h71.6c15.9,25,37.6,46,63.2,61.1c28.7,16.9,61.5,25.8,95,25.8c7.5,0,13.5-6,13.5-13.5V68.65
+    C296,61.25,290,55.15,282.5,55.15z M118.4,315.95H52.7c-14.2,0-25.7-11.5-25.7-25.7v-95.5c0-14.2,11.5-25.7,25.7-25.7h65.7V315.95
+    z M269,402.35c-50.7-4.3-96.9-32.8-123.6-76.6v-166.4c26.7-43.8,72.9-72.3,123.6-76.6V402.35z" />
+                    <path d="M348.9,137.95c-6.1-4.3-14.5-2.8-18.8,3.4c-4.3,6.1-2.8,14.5,3.4,18.8c27,18.8,43.1,49.7,43.1,82.5s-16.1,63.7-43.1,82.5
+    c-6.1,4.3-7.6,12.7-3.4,18.8c2.6,3.8,6.8,5.8,11.1,5.8c2.7,0,5.4-0.8,7.7-2.4c34.2-23.9,54.7-63,54.7-104.6
+    S383.1,161.75,348.9,137.95z" />
+                    <path d="M401.1,82.05c-6.1-4.3-14.5-2.8-18.8,3.4c-4.3,6.1-2.8,14.5,3.4,18.8c45.3,31.6,72.3,83.3,72.3,138.3
+    s-27,106.8-72.3,138.3c-6.1,4.3-7.6,12.7-3.4,18.8c2.6,3.8,6.8,5.8,11.1,5.8c2.7,0,5.4-0.8,7.7-2.4
+    c52.5-36.6,83.9-96.6,83.9-160.5S453.7,118.65,401.1,82.05z" />
+                  </g>
+                </g>
+              </svg>
+            </button>
+
+            <button class="btn" id="voiceAssistantButton">
+              <?xml version="1.0" encoding="utf-8"?>
+              <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M8 6C8 4.34315 9.34315 3 11 3H13C14.6569 3 16 4.34315 16 6V12C16 13.6569 14.6569 15 13 15H11C9.34315 15 8 13.6569 8 12V6Z"
+                  stroke="#000000" stroke-width="1" />
+                <path d="M19 11V12C19 15.3137 16.3137 18 13 18H11C7.68629 18 5 15.3137 5 12V11" stroke="#000000"
+                  stroke-width="1" stroke-linecap="round" />
+                <path d="M12 18L12 21" stroke="#000000" stroke-width="1" stroke-linecap="round" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+  </div>
   </section>
 
 </body>
 <script src="{{ url_for('static', filename='/js/bootstrap.bundle.min.js') }}"></script>
-<!-- <script src="assets/js/app.js"></script> -->
+<script src="{{ url_for('static', filename='/js/app.js') }}"></script>
 
 </html>

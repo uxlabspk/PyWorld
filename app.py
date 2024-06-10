@@ -12,7 +12,6 @@ connection = mysql.connector.connect(
     host="localhost", user="root", password="", database="pyworld"
 )
 
-
 @app.route("/")
 def index():
     if 'email' in session:
@@ -25,8 +24,32 @@ def index():
 
 @app.route("/eye", methods=["POST"])
 def submit():
-    #main()
+#    main()
     return redirect(url_for("index"))
+
+
+@app.route('/voice', methods=["POST"])
+def voice():
+    page = request.json['text']
+
+    if page == 'home':
+        return redirect(url_for('index'))
+    elif page == 'get started':
+        return redirect(url_for('signin'))
+    elif page == 'java':
+        return redirect(url_for('java'))
+    elif page == 'python':
+        return redirect(url_for('python'))
+    elif page == 'mysql':
+        return redirect(url_for('mysql'))
+    elif page == 'contact':
+            return redirect(url_for('contact'))
+    elif page == 'logout':
+            return redirect(url_for('logout'))
+    elif page == 'about':
+        return redirect(url_for('about'))
+    else:
+        return "Command not recognized"
 
 
 @app.route("/signin ", methods=["POST", "GET"])
