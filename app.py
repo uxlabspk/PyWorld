@@ -1,7 +1,6 @@
 from flask import Flask, request, render_template, redirect, url_for, session
 import re
 import mysql.connector
-#from main import main
 
 app = Flask(__name__)
 
@@ -24,7 +23,6 @@ def index():
 
 @app.route("/eye", methods=["POST"])
 def submit():
-#    main()
     return redirect(url_for("index"))
 
 
